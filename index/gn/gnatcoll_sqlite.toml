@@ -1,0 +1,19 @@
+[general]
+description = "GNAT Components Collection - sqlite"
+licenses = ["GMGPL 3.0"]
+authors = ["AdaCore"]
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
+website = "https://github.com/adacore/gnatcoll-db"
+tags = ["gnatcoll", "gnatcoll-db", "sqlite", "sql", "database"]
+project-files = ["sqlite/gnatcoll_sqlite.gpr"]
+
+[general.gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+GNATCOLL_BUILD = ["DEBUG", "PROD"]
+
+["9999.0.0"]
+origin = "git+https://github.com/AdaCore/gnatcoll-db.git@750379af7b8af2b89bffb97658d28a80ea9606d6"
+["9999.0.0".depends-on]
+gnatcoll = "9999.0.0"
+gnatcoll_sql = "9999.0.0"

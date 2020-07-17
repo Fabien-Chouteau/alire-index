@@ -1,12 +1,12 @@
 [general]
-description = "GNAT Components Collection - gomp binding"
+description = "GNAT Components Collection - syslog binding"
 licenses = ["GMGPL 3.0"]
 authors = ["AdaCore"]
 maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
 website = "https://github.com/adacore/gnatcoll-bindings"
-tags = ["gnatcoll", "bindings", "gmp", "arbitrary", "precision", "arithmetic"]
-project-files = ["gmp/gnatcoll_gmp.gpr"]
+tags = ["gnatcoll", "bindings", "syslog", "logging"]
+project-files = ["syslog/gnatcoll_syslog.gpr"]
 
 [general.gpr-externals]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
@@ -14,14 +14,9 @@ GNATCOLL_BUILD = ["DEBUG", "PROD"]
 
 [[general.actions]]
 type = "post-fetch"
-command = ["sed", "-i", "s/\"LIBRARY_TYPE\")/\"LIBRARY_TYPE\", \"static\")/", "gmp/gnatcoll_gmp.gpr"]
-
-[[general.actions]]
-type = "post-fetch"
-command = ["sed", "-i", "s/\"BUILD\")/\"BUILD\", \"PROD\")/", "gmp/gnatcoll_gmp.gpr"]
+command = ["sed", "-i", "s/\"LIBRARY_TYPE\")/\"LIBRARY_TYPE\", \"static\")/", "syslog/gnatcoll_syslog.gpr"]
 
 ["9999.0.0"]
 origin = "git+https://github.com/AdaCore/gnatcoll-bindings.git@7b0376a4443b9bc0b0df63b9e94b03f82f8af5ec"
 ["9999.0.0".depends-on]
 gnatcoll = "9999.0.0"
-libgomp = "*"

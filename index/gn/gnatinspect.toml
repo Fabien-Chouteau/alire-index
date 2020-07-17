@@ -1,0 +1,20 @@
+[general]
+description = "GNAT Components Collection - gnatinspect"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
+website = "https://github.com/adacore/gnatcoll-db"
+project-files = ["gnatinspect/gnatinspect.gpr"]
+
+[general.gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+GNATCOLL_BUILD = ["DEBUG", "PROD"]
+
+["9999.0.0"]
+origin = "git+https://github.com/AdaCore/gnatcoll-db.git@ddc9b796176da212c4b5cde1938c05cac8266522"
+["9999.0.0".depends-on]
+gnatcoll = "9999.0.0"
+gnatcoll_xref = "9999.0.0"
+gnatcoll_sql = "9999.0.0"
+gnatcoll_sqlite = "9999.0.0"

@@ -5,8 +5,8 @@ authors = ["AdaCore"]
 maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
 website = "https://github.com/adacore/gnatcoll-bindings"
-tags = ["gnatcoll", "bindings", "gmp", "arbitrary", "precision", "arithmetic"]
-project-files = ["gmp/gnatcoll_gmp.gpr"]
+tags = ["gnatcoll", "bindings", "openmp", "libgomp"]
+project-files = ["omp/gnatcoll_omp.gpr"]
 
 [general.gpr-externals]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
@@ -14,11 +14,11 @@ GNATCOLL_BUILD = ["DEBUG", "PROD"]
 
 [[general.actions]]
 type = "post-fetch"
-command = ["sed", "-i", "s/\"LIBRARY_TYPE\")/\"LIBRARY_TYPE\", \"static\")/", "gmp/gnatcoll_gmp.gpr"]
+command = ["sed", "-i", "s/\"LIBRARY_TYPE\")/\"LIBRARY_TYPE\", \"static\")/", "omp/gnatcoll_omp.gpr"]
 
 [[general.actions]]
 type = "post-fetch"
-command = ["sed", "-i", "s/\"BUILD\")/\"BUILD\", \"PROD\")/", "gmp/gnatcoll_gmp.gpr"]
+command = ["sed", "-i", "s/\"BUILD\")/\"BUILD\", \"PROD\")/", "omp/gnatcoll_omp.gpr"]
 
 ["9999.0.0"]
 origin = "git+https://github.com/AdaCore/gnatcoll-bindings.git@7b0376a4443b9bc0b0df63b9e94b03f82f8af5ec"

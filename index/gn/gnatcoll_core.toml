@@ -11,8 +11,6 @@ project-files = ["gnatcoll.gpr"]
 [general.gpr-externals]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
 GNATCOLL_BUILD = ["DEBUG", "PROD"]
-GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
-GNATCOLL_OS = ["windows", "unix", "osx"]
 
 [general.gpr-set-externals.'case(os)']
 linux   = { GNATCOLL_OS = "unix" }

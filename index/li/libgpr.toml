@@ -1,0 +1,15 @@
+[general]
+description = "GNAT Components Collection - Core packages"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
+project-files = ["gpr/gpr.gpr"]
+
+[general.gpr-externals]
+BUILD = ["debug", "production", "coverage", "profiling"]
+
+["9999.0.0"]
+origin = "git+https://github.com/AdaCore/gprbuild.git@6fe0720f7f464f727b72a20943f1d44b6a2ebe4e"
+["9999.0.0".depends-on]
+xmlada = "9999.0.0"

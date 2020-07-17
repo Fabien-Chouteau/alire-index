@@ -1,41 +1,30 @@
 [general]
-description = "GNAT Components Collection - Bindings to libiconv"
-licenses = ["GPL 3.0"]
+description = "GNAT Components Collection - iconv binding"
+licenses = ["GMGPL 3.0"]
 authors = ["AdaCore"]
 maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
-
+website = "https://github.com/adacore/gnatcoll-bindings"
+tags = ["gnatcoll", "bindings", "iconv", "i18n"]
 project-files = ["iconv/gnatcoll_iconv.gpr"]
 
-    [general.gpr-externals]
-    BUILD = ["DEBUG", "PROD"]
-    LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
-    GNATCOLL_VERSION = ""
-    GNATCOLL_OS = ["windows", "unix", "osx"]
-    GNATCOLL_ICONV_OPT = ""
+[general.gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+GNATCOLL_BUILD = ["DEBUG", "PROD"]
 
-    [general.gpr-set-externals]
-    BUILD = "PROD"
-    LIBRARY_TYPE = "static-pic"
-    GNATCOLL_ICONV_OPT = ""
+# GNATCOLL_ICONV_OPT should be empty on linux but gprbuild consider empty
+# environement variable as not being set. So we use a harmless linker option to
+# have a non-empty GNATCOLL_ICONV_OPT.
+[general.gpr-set-externals.'case(os)']
+linux   = { GNATCOLL_ICONV_OPT = "-v" }
 
-        [general.gpr-set-externals.'case(os)']
-        linux = { GNATCOLL_OS = "unix" }
-        macos = { GNATCOLL_OS = "osx" }
-        windows = { GNATCOLL_OS = "windows" }
+[[general.actions]]
+type = "post-fetch"
+command = ["sed", "-i", "s/\"LIBRARY_TYPE\")/\"LIBRARY_TYPE\", \"static\")/", "iconv/gnatcoll_iconv.gpr"]
 
-[2019]
-origin = """https://community.download.adacore.com/v1/\
-            964ece4f78755a2fb3c1c84cec2c375cda66bd98?filename="""
-archive-name = "gnatcoll-bindings-2019-20190430-1928C-src.tar.gz"
-origin-hashes = ["""\
-    sha512:6db1d35a1cdf5188001084750f7aa32b193768f8c3dfb6d7db8a8314c745fc054b0\
-    a6d2234a6dd64c5acd4b1bafffa7ce7f1080bd51fbb8bc88edfcc855b7a48\
-"""]
-
-    [2019.depends-on]
-    gnat = ">=9.0"
-    gnatcoll = "^2019"
-
-    [2019.gpr-set-externals]
-    GNATCOLL_VERSION = "2019"
+["9999.0.0"]
+origin = "git+https://github.com/AdaCore/gnatcoll-bindings.git@7b0376a4443b9bc0b0df63b9e94b03f82f8af5ec"
+["9999.0.0".depends-on]
+gnatcoll = "9999.0.0"
+["9999.0.0".depends-on.'case(os)'.windows]
+libiconv = "*"

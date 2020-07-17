@@ -1,0 +1,14 @@
+[general]
+description = "Ada unit test framework"
+licenses = ["GMGPL 3.0"]
+authors = ["AdaCore"]
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
+project-files = ["lib/gnat/aunit.gpr"]
+
+[general.gpr-externals]
+AUNIT_BUILD_MODE = ["Devel", "Install"]
+AUNIT_RUNTIME = ["full", "zfp", "zfp-cross", "ravenscar", "ravenscar-cert", "cert"]
+
+["9999.0.0"]
+origin = "git+https://github.com/AdaCore/aunit.git@6b80c63c685fda92e6cb7ed6b216bcdb40d67637"
